@@ -23,7 +23,7 @@ class Post_Content {
 
 				if ( ! empty( $post_content ) ) {
 
-					$content = $post_content;
+					$content = wp_specialchars_decode( $post_content );
 
 				}
 

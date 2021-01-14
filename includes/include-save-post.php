@@ -12,14 +12,17 @@ class Save_Post {
 
 	public static function set_post_slug( $data, $postarr ) {
 
-		if ( 'pending' === $data['post_status'] && 'publish' === get_post_status( $postarr['ID'] ) ) {
-
-			$post = get_post( $postarr['ID'] );
+		if ( 'pending' === $data['post_status'] ) {
 
 			$data['post_name'] = get_post_field( 'post_name', $postarr['ID'] );
 
-			update_post_meta( $postarr['ID'], '_wsuwp_public_pending_content', $post->post_content );
+			if ( 'publish' === get_post_status( $postarr['ID'] ) ) {
 
+				$post = get_post( $postarr['ID'] );
+
+				update_post_meta( $postarr['ID'], '_wsuwp_public_pending_content', wp_slash( $post->post_content ) );
+
+			}
 		}
 
 		return $data;
