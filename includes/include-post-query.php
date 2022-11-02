@@ -14,7 +14,7 @@ class Post_Query {
 
 		if ( $query->is_main_query() ) {
 
-			$query->set( 'post_status', array( 'publish', 'pending', 'draft' ) );
+			$query->set( 'post_status', array( 'publish', 'pending' ) );
 
 		}
 
