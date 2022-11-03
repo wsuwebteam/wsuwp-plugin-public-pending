@@ -12,7 +12,7 @@ class Post_Query {
 
 	public static function add_pending_to_query( $query ) {
 
-		if ( $query->is_main_query() ) {
+		if ( $query->is_main_query() && is_admin() ) {
 
 			$query->set( 'post_status', array( 'publish', 'pending' ) );
 
